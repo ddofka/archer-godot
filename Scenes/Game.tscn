@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5kolxi81fiqj"]
+
+[ext_resource type="PackedScene" uid="uid://b7hehe7r3l114" path="res://Scenes/Player.tscn" id="1_iukft"]
+[ext_resource type="PackedScene" uid="uid://cgy12pwdjxhv0" path="res://Scenes/platform.tscn" id="2_gl6un"]
+[ext_resource type="Texture2D" uid="uid://p0hpq0eafors" path="res://Assets/night_background.png" id="3_j5yw3"]
+
+[node name="Game" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_iukft")]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(6, -274)
+zoom = Vector2(0.4, 0.4)
+
+[node name="Platform" parent="." instance=ExtResource("2_gl6un")]
+position = Vector2(-5, 808)
+
+[node name="Platform4" parent="." instance=ExtResource("2_gl6un")]
+position = Vector2(9340, 841)
+
+[node name="Platform3" parent="." instance=ExtResource("2_gl6un")]
+position = Vector2(6337, 1365)
+
+[node name="Platform2" parent="." instance=ExtResource("2_gl6un")]
+position = Vector2(3305, 1746)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(13543, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-5630, -1724)
+texture = ExtResource("3_j5yw3")
+centered = false

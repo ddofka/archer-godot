@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7hehe7r3l114"]
+
+[ext_resource type="Script" uid="uid://nn77be5gvjua" path="res://Scripts/player.gd" id="1_kyqiw"]
+[ext_resource type="SpineAtlasResource" uid="uid://bbmmrknnc0673" path="res://Assets/Binary/Main_Char.atlas" id="2_dewec"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cav4tmpmq4kt3" path="res://Assets/Binary/Main_Char.skel" id="2_gntrk"]
+[ext_resource type="PackedScene" uid="uid://cv4huq67chhd" path="res://Scenes/archer.tscn" id="4_dewec"]
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_dewec"]
+atlas_res = ExtResource("2_dewec")
+skeleton_file_res = ExtResource("2_gntrk")
+default_mix = 0.12
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ixxa"]
+size = Vector2(262, 604)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_kyqiw")
+
+[node name="Archer" parent="." instance=ExtResource("4_dewec")]
+visible = false
+z_index = 1
+position = Vector2(30, 4)
+scale = Vector2(1.035, 1.035)
+
+[node name="SpineSprite" type="SpineSprite" parent="."]
+skeleton_data_res = SubResource("SpineSkeletonDataResource_dewec")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
+[node name="GrabHandRayCast" type="RayCast2D" parent="."]
+position = Vector2(71, -462)
+scale = Vector2(6.802387, 21.639524)
+exclude_parent = false
+target_position = Vector2(50, 0)
+
+[node name="GrabCheckRayCast" type="RayCast2D" parent="."]
+position = Vector2(71.99999, -266.00003)
+scale = Vector2(6.802387, 21.639524)
+exclude_parent = false
+target_position = Vector2(50, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, -301)
+shape = SubResource("RectangleShape2D_5ixxa")
